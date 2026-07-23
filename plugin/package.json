@@ -1,0 +1,14 @@
+{
+  "name": "figma-semantic-export",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/code.ts --bundle --outfile=dist/code.js --target=es2020 && cp src/ui.html dist/ui.html",
+    "watch": "esbuild src/code.ts --bundle --outfile=dist/code.js --target=es2020 --watch"
+  },
+  "devDependencies": {
+    "@figma/plugin-typings": "^1.100.0",
+    "esbuild": "^0.21.0",
+    "typescript": "^5.4.0"
+  }
+}

@@ -1,0 +1,8 @@
+/fdb/target/
+/plugin/node_modules/
+/plugin/dist/
+.DS_Store
+firebase-debug.log
+*-debug.log
+.claude/settings.local.json
+.claude/projects/

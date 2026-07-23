@@ -1,0 +1,20 @@
+{
+  "name": "Semantic Schema Export",
+  "id": "substrate-semantic-export",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "capabilities": [],
+  "enableProposedApi": false,
+  "editorType": ["figma"],
+  "ui": "dist/ui.html",
+  "menu": [
+    {
+      "name": "Export Selection",
+      "command": "export-selection"
+    },
+    {
+      "name": "Export Current Page",
+      "command": "export-page"
+    }
+  ]
+}

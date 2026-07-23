@@ -1,0 +1,10 @@
+<script>
+window.onmessage = (event) => {
+  const msg = event.data.pluginMessage;
+  if (msg && msg.type === "copy") {
+    navigator.clipboard.writeText(msg.text).then(() => {
+      parent.postMessage({ pluginMessage: { type: "copy-done" } }, "*");
+    });
+  }
+};
+</script>
