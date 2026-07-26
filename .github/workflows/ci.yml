@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  rust:
+    name: rust (fdb crate)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: fdb
+      - name: build
+        working-directory: fdb
+        run: cargo build --all-targets --verbose
+      - name: test
+        working-directory: fdb
+        run: cargo test --all --verbose
+
+  plugin:
+    name: plugin (figma TS build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: install
+        working-directory: plugin
+        run: npm ci
+      - name: typecheck
+        working-directory: plugin
+        run: npx tsc --noEmit -p tsconfig.json
+      - name: build
+        working-directory: plugin
+        run: npm run build
